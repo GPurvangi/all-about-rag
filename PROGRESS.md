@@ -22,15 +22,44 @@
 ## Current Session — RAG Type 1: Naive RAG
 
 **Branch:** `01-naive-rag`
+**Last updated:** 2026-05-31
 
 **Where we left off:**
-Theory fully locked. Moving into build phase.
+Theory fully locked. Discussed project structure and branch strategy.
 
-**Last question to user (unanswered):**
-> "What files will you create inside `01-naive-rag/` and what will each do?"
+**Decisions made this session:**
+1. Project file structure for each RAG type:
+   ```
+   01-naive-rag/
+   ├── data/sample.txt       # knowledge base documents
+   ├── indexer.py            # chunk → embed → store in vector DB
+   ├── retriever.py          # embed query → similarity search → top-K chunks
+   ├── generator.py          # chunks + query → LLM → answer
+   ├── main.py               # ties all 3 stages together
+   ├── eval.py               # measures precision, recall, latency
+   ├── requirements.txt      # package dependencies
+   └── README.md             # explanation + how to run + results
+   ```
+
+2. `requirements.txt` packages confirmed:
+   ```
+   openai
+   qdrant-client
+   langchain
+   langchain-openai
+   tiktoken
+   python-dotenv
+   ```
+
+3. Branch strategy decision (PENDING USER CONFIRMATION):
+   - Current: 1 branch per RAG type (13 branches created)
+   - Recommended: folders on `main`, branches only for active work → merge when done
+   - User will decide tomorrow before starting development
 
 **Next step when resuming:**
-User answers file structure question → Jarvis validates → user creates files → builds each component step by step.
+1. Decide branch strategy (keep 13 branches as temp workspaces OR collapse to main+folders)
+2. Create `01-naive-rag/` folder structure
+3. Start writing `indexer.py` — user describes code, Jarvis grills
 
 ---
 
